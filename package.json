@@ -9,21 +9,7 @@
     "start": "next start",
     "build-stats": "cross-env ANALYZE=true npm run build",
     "clean": "rimraf .next .swc out coverage",
-    "lint": "next lint",
-    "format": "next lint --fix && prettier '**/*.{json,yaml}' --write --ignore-path .gitignore",
-    "check-types": "tsc --noEmit --pretty",
-    "test": "vitest run",
-    "commit": "cz",
-    "db:generate": "drizzle-kit generate",
-    "db:migrate": "dotenv -c -- drizzle-kit migrate",
-    "db:studio": "dotenv -c -- drizzle-kit studio",
-    "test:e2e": "playwright test",
-    "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build",
-    "storybook:serve": "http-server storybook-static --port 6006 --silent",
-    "serve-storybook": "run-s storybook:*",
-    "test-storybook:ci": "start-server-and-test serve-storybook http://127.0.0.1:6006 test-storybook",
-    "prepare": "husky"
+    "lint": "next lint"
   },
   "dependencies": {
     "@clerk/localizations": "^2.4.3",
@@ -43,6 +29,7 @@
     "react-dom": "~18.2.0",
     "react-hook-form": "^7.51.5",
     "sharp": "^0.33.4",
+    "slack-blocks-to-jsx": "^0.2.1",
     "zod": "^3.23.8"
   },
   "devDependencies": {
@@ -117,34 +104,5 @@
     "vite-tsconfig-paths": "^4.3.2",
     "vitest": "^1.6.0",
     "vitest-fail-on-console": "^0.7.0"
-  },
-  "config": {
-    "commitizen": {
-      "path": "@commitlint/cz-commitlint"
-    }
-  },
-  "release": {
-    "branches": [
-      "main"
-    ],
-    "plugins": [
-      [
-        "@semantic-release/commit-analyzer",
-        {
-          "preset": "conventionalcommits"
-        }
-      ],
-      "@semantic-release/release-notes-generator",
-      "@semantic-release/changelog",
-      [
-        "@semantic-release/npm",
-        {
-          "npmPublish": false
-        }
-      ],
-      "@semantic-release/git",
-      "@semantic-release/github"
-    ]
-  },
-  "author": "Ixartz (https://github.com/ixartz)"
+  }
 }
